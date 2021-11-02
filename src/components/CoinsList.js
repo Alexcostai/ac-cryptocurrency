@@ -1,9 +1,10 @@
 import React from 'react'
+import Coin from './Coin'
 
-export default function CoinsList() {
+export default function CoinsList({ coins }) {
   return (
-    <div>
-
-    </div>
+    coins.map((coin, index) => (
+      <Coin key={index} id={coin.id} currency={coin.currency} />
+    ))
   )
 }

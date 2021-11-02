@@ -1,35 +1,19 @@
 import './App.css';
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import TableCoins from './components/TableCoins'
-import Coin from './components/Coin';
+import CoinsList from './components/CoinsList';
+
+const coins = [
+  { id: "bitcoin", currency: "usd" },
+  { id: "amber", currency: "btc" },
+  { id: "black-eye-galaxy", currency: "usd" }
+]
 
 function App() {
-
-  const [coins, setCoins] = useState([]);
-
-  async function getCryptoData() {
-    try {
-      const { data: btcData } = await axios.get("https://api.coingecko.com/api/v3/coins/bitcoin?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false")
-      const { data: bygData } = await axios.get("https://api.coingecko.com/api/v3/coins/black-eye-galaxy?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false")
-      const { data: ambData } = await axios.get("https://api.coingecko.com/api/v3/coins/amber?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false")
-      setCoins([btcData, bygData, ambData]);
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
-
-  useEffect(() => {
-    setInterval(() => {
-      getCryptoData()
-    }, 10000);
-  }, [])
-
   return (
     <div className="container">
-      <div className="row">
-        <TableCoins coins={coins} />
-        <Coin id={"amber"} />
+      <div className="row d-flex justify-content-center">
+        <h1 style={{ margin: 20 }}>Cryptocurrency App by Alex Costa</h1>
+        <hr />
+        <CoinsList coins={coins} />
       </div>
     </div>
   );
