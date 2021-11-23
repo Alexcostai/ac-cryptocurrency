@@ -1,21 +1,26 @@
-import './App.css';
-import CoinsList from './components/CoinsList';
+import "./App.css";
+import { useState } from "react";
+import { Themes } from "./components";
+import CoinsList from "./components/CoinsList";
+import { ThemeProvider } from "styled-components";
 
 const coins = [
-  { id: "bitcoin", currency: "usd" },
-  { id: "amber", currency: "btc" },
-  { id: "black-eye-galaxy", currency: "usd" }
-]
+  { id: "binance-bitcoin", currency: "usd" },
+  { id: "matic-network", currency: "usd" },
+];
 
 function App() {
+  const [theme, setTheme] = useState("light");
   return (
-    <div className="container">
-      <div className="row d-flex justify-content-center">
-        <h1 style={{ margin: 20 }}>Cryptocurrency App by Alex Costa</h1>
-        <hr />
-        <CoinsList coins={coins} />
+    <ThemeProvider theme={Themes[theme]}>
+      <div className="container">
+        <div className="row d-flex justify-content-center">
+          <h1 style={{ margin: 20 }}>Cryptocurrency App by Alex Costa</h1>
+          <hr />
+          <CoinsList coins={coins} />
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 
