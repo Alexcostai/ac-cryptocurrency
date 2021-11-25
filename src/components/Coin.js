@@ -27,9 +27,9 @@ function Coin({ id, currency }) {
   }
 
   useEffect(() => {
-    setInterval(() => {
-      getCoinData();
-    }, RELOAD_TIME);
+    // setInterval(() => {
+    //   getCoinData();
+    // }, RELOAD_TIME);
   }, []);
 
   //Chart
